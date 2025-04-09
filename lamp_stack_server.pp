@@ -34,3 +34,6 @@ file { '/var/www/html/phpinfo.php':
   require => Package['apache2'],  # Ensure Apache is installed before creating the file
 }
 
+package { 'mariadb-server':
+  ensure => installed,
+}
