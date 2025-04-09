@@ -4,22 +4,22 @@ package { 'apache2':
 
 package { 'php':
   ensure => installed,
-  require => Package['apache2'],  # Ensure Apache is installed first
+  require => Package['apache2'],
 }
 
 package { 'libapache2-mod-php':
   ensure => installed,
-  require => Package['php'],  # Ensure PHP is installed first
+  require => Package['php'],
 }
 
 package { 'php-cli':
   ensure => installed,
-  require => Package['php'],  # Ensure PHP is installed first
+  require => Package['php'],
 }
 
 package { 'php-mysql':
   ensure => installed,
-  require => Package['php'],  # Ensure PHP is installed first
+  require => Package['php'],
 }
 
 service { 'apache2':
@@ -29,9 +29,9 @@ service { 'apache2':
 }
 
 file { '/var/www/html/phpinfo.php':
-  source => 'file:///home/meye3469/nm_inet4031_puppet_lab9/phpinfo.php',  # Correct path
-  notify => Service['apache2'],  # Notify Apache to restart when the file changes
-  require => Package['apache2'],  # Ensure Apache is installed before creating the file
+  source => 'file:///home/meye3469/nm_inet4031_puppet_lab9/phpinfo.php',
+  notify => Service['apache2'],
+  require => Package['apache2'],
 }
 
 package { 'mariadb-server':
